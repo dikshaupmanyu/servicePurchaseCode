@@ -2,7 +2,7 @@ var compression = require('compression')
 var express  = require('express');
 var app      = express();
 var fs      = require('fs');
-var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 5000;
 var path = require('path');
 var cors = require('cors');
 var request = require('request');
@@ -23,7 +23,7 @@ var bodyParser = require('body-parser');
 	 app.get('/servicesdetail', function(req, res) {
 
 	 	var serviceIddd = req.query.id;
-
+	 	console.log("hiii");
 	    
 	    res.render('servicesdetail.ejs' , {serviceIdDetail : serviceIddd });
 		     
