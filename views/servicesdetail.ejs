@@ -194,7 +194,7 @@ let searchParams = new URLSearchParams(paramsString);
 $(document).ready(function () {
 
 $("#formoid").submit(function(event){
-  alert(JSON.stringify(event));
+  // alert(JSON.stringify(event));
 
   var userName = $('#uname').val();
   var pasWrdd = $('#pswrd').val();
@@ -221,12 +221,12 @@ $("#formoid").submit(function(event){
                 // alert(datak);
                 var dataResultp = JSON.parse(datak);
                 // alert(dataResultp.stockName);
-                $(".successmsg").html('<span>"Your tip for '+dataResultp.userName+' was submitted successfully."</span>');
-            setTimeout(function(){$(".successmsg").empty()}, 3000);
-              setTimeout(function(){
-               // window.location.reload(1);
-               window.location.href = "/servicesdetail?id=e5da58b5-4214-4746-9133-5ae166903b83"; 
-               }, 2000);
+            //     $(".successmsg").html('<span>"Your tip for '+dataResultp.userName+' was submitted successfully."</span>');
+            // setTimeout(function(){$(".successmsg").empty()}, 3000);
+            //   setTimeout(function(){
+            //    // window.location.reload(1);
+            //    window.location.href = "/servicesdetail?id=e5da58b5-4214-4746-9133-5ae166903b83"; 
+            //    }, 2000);
 
        })
       .catch(error => console.log('error', error));
