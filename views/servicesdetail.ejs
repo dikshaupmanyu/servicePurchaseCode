@@ -94,12 +94,13 @@
                         <h2>Service Detail</h2>
                         <p>Thank you for Joining this service</p>
                       </div>
-                      <div class="prfl_tb_cntnt_bx">
+                      <div class="post_new_tips_wrapper">
                         <div class="edit_profile_form">
                           <div class="input-group">
                             <label>Type of Service</label>
                             <span style="color: white;" id="typeService"></span>
                           </div>
+                         
                           <div class="input-group">
                             <label>Name of Service</label>
                              <span style="color: white;" id="nameService"></span>
@@ -123,26 +124,208 @@
                             <span style="color: white;" id="priceService"></span>
                            
                           </div>
+                         
+                        <div class="prfl_tb_cntnt_bx">
+                        
+                        <p style="color: white;">Sign Up for this Service today</p>
+                       </div>
+
+                         <form action="/charge" method="POST" class="flex flex-col w-1/3">
                           <div class="input-group">
-                            
-                            <label>Purchse and SignUp today</label>
-                           
+                            <input type="text" name="" placeholder="Enter Userame" class="form-control" required="required">
+
+                          </div>
+                          <div class="input-group">
+                            <input type="text" name="" placeholder="Enter Email" class="form-control" required="required">
+
+                          </div>
+                          <div class="input-group">
+                            <input type="text" name="" placeholder="Create a Password" class="form-control" required="required">
+
+                          </div>
+                          <div class="input-group">
+                            <input type="text" name="" placeholder="Confirm Password" class="form-control" required="required">
+
                           </div>
                           <div class="input-group">
                             <label class="hide-sm">&nbsp;</label>
-                            <button class="btn cmn_btn btn_primary">Purchase</button>
+                            <button class="btn cmn_btn btn_primary" type="submit">Submit</button>
                           </div>
+                         </form>
+
                         </div>
 
                       </div>
                 </div>
                  <div class="dashboard_wrapper_right col" style="max-width: 40%;">
-                   <img id="serviceImage" class="img-responsive" style="height: 400px;width: 400px;">
-                 </div>
+                    
+                    <br>
+                    <br>
+                    <br>
+
+                        <div class="input-group">
+                            <img id="serviceImage" class="img-responsive" style="height: 200px;width: 400px;">
+                          </div>
+
+                          <br>
+
+                           <div class="edit_profile_form">
+
+                        
+                        <p style="color: white;">Already have a TradeTips account</p>
+                       </div>
+
+                        <br>
+                         <form action="/charge" method="POST" class="flex flex-col w-1/3">
+                          <div class="post_new_tips_wrapper">
+                        
+                          <div class="edit_profile_form">
+                          <div class="input-group">
+                            <input type="text" name="" placeholder="Enter Userame or email" class="form-control" required="required">
+
+                          </div>
+
+                          <div class="input-group">
+                            <input type="text" name="" placeholder="Enter Password" class="form-control" required="required">
+
+                          </div>
+                          <div class="input-group">
+                            <label class="hide-sm">&nbsp;</label>
+                            <button class="btn cmn_btn btn_primary" type="submit">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                         </form>
+
+
+
+                           
+
               </div>
             
             </div>
+
           </div>
+          <br>
+          
+                      <form action="/charge" method="POST" class="flex flex-col w-1/3">
+                      <div class="post_new_tips_wrapper">
+                        
+                        <div class="edit_profile_form">
+                          <div class="input-group">
+                           <!--  <label>Name</label> -->
+                            <input type="text" name="" placeholder="Enter Name" class="form-control" required="required">
+
+                          </div>
+                          <div class="input-group">
+                            <!-- <label>Card Number</label> -->
+                             <input type='text' class="form-control" name="cardNumber" id="cardNumber" placeholder="1234 1234 1234 1234" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required">
+                             <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>  
+
+                          </div>
+                          <div class="input-group">
+                           <!--  <label>Expiration Date</label> -->
+                              <select class="form-control" id="month" name="month" required="required">
+                                <option>Select Month</option>
+                                <option value="1">January</option>
+                                <option value="2">February </option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            
+                          </div>
+                          <div class="input-group">
+                           <!--  <label>Expiration Year</label> -->
+                           <select class="form-control" id="year" name="year" required="required">
+                              <option>Select Year</option>
+                            <% for (i = 2022; i < 2035 ; i++) { %>
+                              <option value="<%= i %>"><%= i %></option>
+                            <% } %>
+                          </select>
+                           
+                          </div>
+                          <div class="input-group">
+                           <!--  <label>Cvv Number</label> -->
+                          <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" required="required" maxlength="3"  onkeypress="return IsNumerics(event);" ondrop="return false;" onpaste="return false;">    
+                           <span id="errors" style="color: Red; display: none">* Input digits (0 - 9)</span>
+
+
+                          </div>
+                          <div class="input-group">
+                            <!-- <label>Zip Code</label> -->
+                            <input type="text" class="form-control" placeholder="Zip Code" required="required" maxlength="5"  onkeypress="return IsNumericpincode(event);" ondrop="return false;" onpaste="return false;">
+                             <span id="errorpincode" style="color: Red; display: none">* Input digits (0 - 9)</span>
+                           
+                          </div>
+                         
+                          <div class="input-group">
+                            <label class="hide-sm">&nbsp;</label>
+                            <button class="btn cmn_btn btn_primary" type="submit">Purchase</button>
+                          </div>
+                        </div>
+
+                      </div>
+                 </div>
+
+    
+<script>
+function cc_format(value) {
+  var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+  var matches = v.match(/\d{4,16}/g);
+  var match = matches && matches[0] || ''
+  var parts = []
+  for (i=0, len=match.length; i<len; i+=4) {
+    parts.push(match.substring(i, i+4))
+  }
+  if (parts.length) {
+    return parts.join(' ')
+  } else {
+    return value
+  }
+}
+
+onload = function() {
+  document.getElementById('cardNumber').oninput = function() {
+    this.value = cc_format(this.value)
+  }
+}
+
+var specialKeys = new Array();  
+        specialKeys.push(8);  
+        function IsNumeric(e) 
+        {  
+            var keyCode = e.which ? e.which : e.keyCode  
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);  
+            document.getElementById("error").style.display = ret ? "none" : "inline";  
+            return ret;  
+        }  
+         function IsNumerics(e) 
+        {  
+            var keyCode = e.which ? e.which : e.keyCode  
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);  
+            document.getElementById("errors").style.display = ret ? "none" : "inline";
+            return ret;  
+        }  
+         function IsNumericpincode(e) 
+        {  
+            var keyCode = e.which ? e.which : e.keyCode  
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);  
+            document.getElementById("errorpincode").style.display = ret ? "none" : "inline";
+            return ret;  
+        }  
+</script>
+           
+           
+      
+          </form>
 
   </div>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
