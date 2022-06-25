@@ -110,7 +110,7 @@ width:100%
             </div>
           <br>
 
-                <form id="formoidstep" method="POST" class="flex flex-col w-1/3" style="width:60%; position:relative; left:20%">
+                <form action="/charge" method="POST" class="flex flex-col w-1/3" style="width:60%; position:relative; left:20%">
 
                       <input type="text" name="userName" value="<%= name %>">
                       <input type="text" name="emailData" value="<%= email %>">
@@ -284,9 +284,72 @@ var specialKeys = new Array();
 }
 });
 
-   $("#formoidstep").submit(function(event){
-    alert(JSON.stringify(event));
- });
+//    $("#formoidstep").submit(async function(event){
+
+//     alert(JSON.stringify(event));
+
+
+//   var amount = $('#prices').val();
+//   var price = amount * 100;
+//   var userName = "<%= name %>";
+//   var tokenval = "<%= tokens %>";
+//   var serviceId = "<%= serviceIdDetail %>";
+//   var email = "<%= email %>";
+//   var cardnum = $('#cardNumber').val();
+//   var cardmonth = $('#month').val();
+//   var cardyear = $('#year').val();
+//   var cvc = $('#cvc').val();
+
+//    const stripe = require('stripe')('pk_test_Pbri8k4HUNcegrgjAohigZKF002BpByODh');
+
+//     try {
+
+
+//     const paymentMethod = await stripe.paymentMethods.create({
+//         type: 'card',
+//         card: {
+//           number: cardnum,
+//           exp_month: cardmonth,
+//           exp_year: cardyear,
+//           cvc: cvv,
+//         },
+//         billing_details: {
+//           email: email,
+//           name: userName
+//         }
+//       });
+
+        
+//           var options = { method: 'POST',
+//             url: 'https://apistest.tradetipsapp.com/api/stripe/createStripePayment',
+//             headers: 
+//              { 'postman-token': 'a1f3bad2-8aab-6d21-7162-d82350e953af',
+//                'cache-control': 'no-cache',
+//                authorization: 'Bearer '+tokenval },     
+//                formData: { userName: userName,
+//                paymentId: paymentMethod.id,
+//                subscriptionPlanId: serviceId } };
+
+//           request(options, function (error, response, body) {
+
+//             if(error){
+//               console.log("error");
+//               console.log(error);
+//             }else{
+//               console.log("success");
+//               console.log(response);
+//             }
+          
+//           });
+
+
+//         } catch {
+     
+//         return res.redirect('/incomplete');
+// };
+   
+   
+//  });
 
   
   </script>

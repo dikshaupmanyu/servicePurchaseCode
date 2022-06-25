@@ -92,11 +92,11 @@ var bodyParser = require('body-parser');
           request(options, function (error, response, body) {
 
           	if(error){
-          		console.log("error");
-          		console.log(error);
+          		alert("error");
+          		alert(error);
           	}else{
-          		console.log("success");
-          		console.log(response);
+          		alert("success");
+          		alert(response);
           	}
             // if (error) throw new Error(error);
 

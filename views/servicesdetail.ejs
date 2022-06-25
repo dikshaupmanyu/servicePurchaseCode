@@ -118,7 +118,7 @@ width:100%
                         <p style="color: white;">Sign Up for this Service today</p>
                        </div>
 
-                         <form   method="POST" class="flex flex-col w-1/3">
+                         <form method="POST" class="flex flex-col w-1/3">
                           <div class="input-group">
                             <input type="text" name="" placeholder="Enter Userame" class="form-control" id="uname" required="required" >
 
@@ -169,12 +169,12 @@ width:100%
                                     
                                       <div class="edit_profile_form">
                                       <div class="input-group">
-                                        <input type="text" id="uname" name="userName"  placeholder="Enter Userame or email" class="form-control">
+                                        <input type="text" id="unames" name="userName"  placeholder="Enter Userame or email" class="form-control">
 
                                       </div>
 
                                       <div class="input-group">
-                                        <input type="text" id="pswrd" name="password" placeholder="Enter Password" class="form-control" >
+                                        <input type="text" id="pswrds" name="password" placeholder="Enter Password" class="form-control" >
 
                                       </div>
                                       <div class="input-group">
@@ -195,10 +195,10 @@ const serviceIds = urlParams.get('id');
 $(document).ready(function () {
 
 $("#formoid").submit(function(event){
-  // alert(JSON.stringify(event));
+   // alert(JSON.stringify(event));
 
-  var userName = $('#uname').val();
-  var pasWrdd = $('#pswrd').val();
+  var userName = $('#unames').val();
+  var pasWrdd = $('#pswrds').val();
 
     var formdata = new FormData();
 
@@ -221,7 +221,7 @@ $("#formoid").submit(function(event){
                 var datak = JSON.stringify(result);
                 // alert(datak);
                 var dataResultp = JSON.parse(datak);
-                // alert(dataResultp.stockName);
+                alert(dataResultp.userName);
                 $(".successmsg").html('<span>"Login successfully '+dataResultp.userName+' !!"</span>');
                 
                  setTimeout(function(){$(".successmsg").empty()}, 3000);
@@ -487,7 +487,7 @@ var specialKeys = new Array();
                success: function(data){
                  var datak = JSON.stringify(data); 
                  var dataResult = JSON.parse(datak);
-                console.log(dataResult);
+                // console.log(dataResult);
                  var mentor = dataResult.isMentor        
                  // alert(mentor); 
                  // alert(dataResult.accessToken)
