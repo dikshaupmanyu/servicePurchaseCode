@@ -137,7 +137,8 @@ width:100%
                           </div>
                           <div class="input-group">
                             <label class="hide-sm">&nbsp;</label>
-                            <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button>
+                            <!-- <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button> -->
+                            <button class="btn cmn_btn btn_primary" type="button">Submit</button>
                           </div>
                          </form>
 
@@ -221,8 +222,11 @@ $("#formoid").submit(function(event){
                 var datak = JSON.stringify(result);
                 // alert(datak);
                 var dataResultp = JSON.parse(datak);
-                alert(dataResultp.userName);
-                $(".successmsg").html('<span>"Login successfully '+dataResultp.userName+' !!"</span>');
+                // alert(dataResultp.userName);
+                // alert(dataResultp.accessToken);
+                if(dataResultp.accessToken){
+
+                  $(".successmsg").html('<span>"Login successfully '+dataResultp.userName+' !!"</span>');
                 
                  setTimeout(function(){$(".successmsg").empty()}, 3000);
 
@@ -230,6 +234,20 @@ $("#formoid").submit(function(event){
                    // window.location.reload(1);
                    window.location.href = "/servicesdetailstepOne?id="+serviceIds+"&logindetail="+JSON.stringify(dataResultp); 
                    }, 2000);
+
+                }else{
+                  
+                   $(".successmsg").html('<span>"Your username or password is not correct."</span>');
+                
+                 setTimeout(function(){$(".successmsg").empty()}, 3000);
+
+                  setTimeout(function(){
+                   // window.location.reload(1);
+                   window.location.href = "/servicesdetail?id="+serviceIds; 
+                   }, 2000);
+
+                }
+               
 
        })
       .catch(error => console.log('error', error));
@@ -262,11 +280,7 @@ $("#formoid").submit(function(event){
                           
                             <p style="color: white;">Card Information</p>
                            </div>
-                          <div class="input-group">
-                           <!--  <label>Name</label> -->
-                            <input type="text" name="" placeholder="Enter Name" class="form-control" required="required" readonly>
-
-                          </div>
+                         
                           <div class="input-group">
                             <!-- <label>Card Number</label> -->
                              <input type='text' class="form-control" name="cardNumber" id="cardNumber" placeholder="1234 1234 1234 1234" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required" readonly >
@@ -318,7 +332,7 @@ $("#formoid").submit(function(event){
                          
                           <div class="input-group">
                             <label class="hide-sm">&nbsp;</label>
-                            <button class="btn cmn_btn btn_primary" type="submit">Purchase</button>
+                            <button class="btn cmn_btn btn_primary" type="button">Purchase</button>
                           </div>
                         </div>
 
@@ -424,11 +438,13 @@ var specialKeys = new Array();
           // alert(datak);
           var dataResultp = JSON.parse(datak); 
           // alert(dataResultp.title);
+          let str = dataResultp.stripeProductName;
+          str = str.split("_")[0];
           document.getElementById("typeService").innerHTML = dataResultp.serviceTypeMaster.description;
           document.getElementById("nameService").innerHTML = dataResultp.title;
           document.getElementById("shortDescriptionService").innerHTML = dataResultp.descriptionOne;
           document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
-          document.getElementById("mentorNameService").innerHTML = dataResultp.mentorName;
+          document.getElementById("mentorNameService").innerHTML = str;
           document.getElementById("priceService").innerHTML = dataResultp.price;
           if(dataResultp.imageDetails == null){
               document.getElementById("serviceImage").src = dataResultp.thumbnailImageUrl;

@@ -13,18 +13,38 @@ var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 
 
+
  
 	app.use(compression());
 	app.use(cors());
+	app.use(express.bodyParser()); // get information from html forms
+
 
 	app.set('view engine', 'ejs'); // set up ejs for templating
 	app.use(express.static(path.join(__dirname, 'public')));
+
 
 	 app.get('/servicesdetail', function(req, res) {
 
 	 	var serviceIddd = req.query.id;
 	    
 	    res.render('servicesdetail.ejs' , {serviceIdDetail : serviceIddd });
+		     
+	 });
+
+	 app.get('/success', function(req, res) {
+
+	 	var serviceIddd = req.query.id;
+	    
+	    res.render('success.ejs' , {serviceIdDetail : serviceIddd });
+		     
+	 });
+
+	 app.get('/failure', function(req, res) {
+
+	 	var serviceIddd = req.query.id;
+	    
+	    res.render('failure.ejs' , {serviceIdDetail : serviceIddd });
 		     
 	 });
 
@@ -46,25 +66,21 @@ var bodyParser = require('body-parser');
 		     
 	 });
 
-  
-  app.post("/charge",async function (req, res) {
-
-    console.log(req.body);
-    // console.log(res);
-    // return false;
-    var email = req.body.emailData;
-    var uname = req.body.userName;
-    var price = req.body.amount * 100;
-    var tokens = req.body.tokendata;
 
 
 
-    const stripe = require('stripe')('pk_test_Pbri8k4HUNcegrgjAohigZKF002BpByODh');
+  app.post('/payment', async function(req, res){
+ 
+    // Moreover you can take more details from user
+    // like Address, Name, etc from form
 
-    try {
+    // console.log(req.body);
 
+        const stripe = require('stripe')('pk_test_Pbri8k4HUNcegrgjAohigZKF002BpByODh');
 
-    const paymentMethod = await stripe.paymentMethods.create({
+        try {
+
+        const paymentMethod = await stripe.paymentMethods.create({
         type: 'card',
         card: {
           number: req.body.cardNumber,
@@ -78,27 +94,26 @@ var bodyParser = require('body-parser');
         }
       });
 
-        
-          var options = { method: 'POST',
+        // console.log("hiiiii data " + paymentMethod);
+
+        var options = { method: 'POST',
             url: 'https://apistest.tradetipsapp.com/api/stripe/createStripePayment',
             headers: 
              { 'postman-token': 'a1f3bad2-8aab-6d21-7162-d82350e953af',
                'cache-control': 'no-cache',
-               authorization: 'Bearer '+tokens },     
-               formData: { userName: req.body.name,
+               authorization: 'Bearer '+req.body.tokendata },     
+               formData: { userName: req.body.userName,
                paymentId: paymentMethod.id,
                subscriptionPlanId: req.body.serviceIds } };
 
           request(options, function (error, response, body) {
 
-          	if(error){
-          		alert("error");
-          		alert(error);
-          	}else{
-          		alert("success");
-          		alert(response);
+        
+          	if(response){
+
+          		res.render("success.ejs" , {userName : req.body.userName, userEmail : req.body.emailData , service : req.body.serviceIds , mentorName : req.body.mentorName});
           	}
-            // if (error) throw new Error(error);
+             // if (error) throw new Error(error);
 
             // {
             //   res.render('incomplete.ejs');
@@ -112,17 +127,15 @@ var bodyParser = require('body-parser');
           });
 
 
-        } catch {
-     
-        return res.redirect('/incomplete');
-};
+      } catch(error) {
 
+      	console.log(error.raw.message);
 
-   
- 
+      	res.render("failure.ejs" , {data : error.raw.message , service : req.body.serviceIds});
+     };
+
 });
 
-  
   
 /////////////////////////////////////////
 var httpServer = http.createServer(app);
