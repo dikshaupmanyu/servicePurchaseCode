@@ -23,25 +23,39 @@ var bodyParser = require('body-parser');
 	 app.get('/servicesdetail', function(req, res) {
 
 	 	var serviceIddd = req.query.id;
-	 	console.log("hiii");
 	    
 	    res.render('servicesdetail.ejs' , {serviceIdDetail : serviceIddd });
 		     
 	 });
 
-	  app.post("/charge", async (req, res , next) => {
+	 app.get('/servicesdetailstepOne', function(req, res) {
 
-    var request = require("request");
+	 	var serviceIddd = req.query.id;
+	 	var logindetails = req.query.logindetail;
+	 	// console.log(serviceIddd);
+	 	// console.log(JSON.stringify(logindetails));
+	 	// var fdata = JSON.stringify(logindetails);
+	 	const obj = JSON.parse(logindetails);
+	 	// console.log(obj);
+	 	var logintoken = obj.accessToken;
+	 	var loginemail = obj.email;
+	 	var loginname = obj.userName;
+	 	var loginid = obj.id;
+	    
+	    res.render('servicesdetailstepOne.ejs' , {serviceIdDetail : serviceIddd , tokens : logintoken , email : loginemail , name : loginname , id : loginid });
+		     
+	 });
 
-    // console.log(req.body.token);
+  
+  app.post("/charge",async function (req, res) {
+
+    console.log(req.body);
     // console.log(res);
-    var email = req.body.email;
-    var uname = req.body.name;
-    var plan = req.body.planName;
+    // return false;
+    var email = req.body.emailData;
+    var uname = req.body.userName;
     var price = req.body.amount * 100;
-    var subscriptionPlanId = req.body.subscriptionPlan;
-    var couponId = req.body.text1;
-    var tokens = req.body.token;
+    var tokens = req.body.tokendata;
 
 
 
@@ -59,8 +73,8 @@ var bodyParser = require('body-parser');
           cvc: req.body.cvv,
         },
         billing_details: {
-          email: req.body.email,
-          name: req.body.name
+          email: req.body.emailData,
+          name: req.body.userName
         }
       });
 
@@ -73,18 +87,25 @@ var bodyParser = require('body-parser');
                authorization: 'Bearer '+tokens },     
                formData: { userName: req.body.name,
                paymentId: paymentMethod.id,
-               subscriptionPlanId: req.body.subscriptionPlan,
-               couponId : req.body.text1 } };
+               subscriptionPlanId: req.body.serviceIds } };
 
           request(options, function (error, response, body) {
-            if (error) throw new Error(error);
+
+          	if(error){
+          		console.log("error");
+          		console.log(error);
+          	}else{
+          		console.log("success");
+          		console.log(response);
+          	}
+            // if (error) throw new Error(error);
 
             // {
             //   res.render('incomplete.ejs');
             // }
             // throw new Error(error);
 
-            console.log(response);
+            // console.log(response);
             // console.log(error);
             // console.log(body);
             // res.render('complete.ejs');

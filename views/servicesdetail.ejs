@@ -187,9 +187,10 @@ width:100%
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-let paramsString = window.location.href;
-let searchParams = new URLSearchParams(paramsString);
-// alert(searchParams);
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const serviceIds = urlParams.get('id');
+// alert(serviceIds);
 
 $(document).ready(function () {
 
@@ -221,12 +222,14 @@ $("#formoid").submit(function(event){
                 // alert(datak);
                 var dataResultp = JSON.parse(datak);
                 // alert(dataResultp.stockName);
-            //     $(".successmsg").html('<span>"Your tip for '+dataResultp.userName+' was submitted successfully."</span>');
-            // setTimeout(function(){$(".successmsg").empty()}, 3000);
-            //   setTimeout(function(){
-            //    // window.location.reload(1);
-            //    window.location.href = "/servicesdetail?id=e5da58b5-4214-4746-9133-5ae166903b83"; 
-            //    }, 2000);
+                $(".successmsg").html('<span>"Login successfully '+dataResultp.userName+' !!"</span>');
+                
+                 setTimeout(function(){$(".successmsg").empty()}, 3000);
+
+                  setTimeout(function(){
+                   // window.location.reload(1);
+                   window.location.href = "/servicesdetailstepOne?id="+serviceIds+"&logindetail="+JSON.stringify(dataResultp); 
+                   }, 2000);
 
        })
       .catch(error => console.log('error', error));
