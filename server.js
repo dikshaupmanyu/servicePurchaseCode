@@ -96,7 +96,7 @@ var bodyParser = require('body-parser');
         },
         billing_details: {
           email: req.body.emailData,
-          name: req.body.userName
+          name: req.body.cardName
         }
       });
 
