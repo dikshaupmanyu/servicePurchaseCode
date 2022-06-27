@@ -476,6 +476,7 @@ var specialKeys = new Array();
         var url_string = window.location.href; 
         var urls = new URL(url_string);
        //  alert(url_string);
+         var subsids = "<%= serviceIdDetail %>";
         $('#formRegister').on('click', function() {
           //  alert("hii");
            var userName = $('#uname').val();
@@ -509,7 +510,7 @@ var specialKeys = new Array();
                  success: function(data){
                    var datak = JSON.stringify(data); 
                    var dataResultp = JSON.parse(datak);
-                  console.log(dataResultp);
+                  alert(JSON.stringify(dataResultp));
                   // alert(dataResultp)
                   // if(dataResultp.status == true){
                   //   $(".successmsg").html(dataResultp.message);
@@ -519,8 +520,12 @@ var specialKeys = new Array();
                     // alert('false')
                     if(dataResultp.email){
                       $(".successmsg").html(dataResultp.message);
-                    setTimeout(function(){$(".successmsg").empty()}, 2000);  
-                    setTimeout(function(){$(window.location.reload()).empty()}, 2100);  
+                     setTimeout(function(){$(".successmsg").empty()}, 3000);
+
+                  setTimeout(function(){
+                   // window.location.reload(1);
+                   window.location.href = "/servicesdetailstepOne?id="+subsids+"&logindetail="+JSON.stringify(dataResultp); 
+                   }, 2000);
                     }
                     else{
 
