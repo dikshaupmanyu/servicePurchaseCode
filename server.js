@@ -76,6 +76,12 @@ var bodyParser = require('body-parser');
 
     // console.log(req.body);
 
+     let months = req.body.year;
+          months = months.split("-")[0];
+       // console.log(months);
+      let dates = req.body.year;
+          dates = dates.split("-")[1];
+      // console.log(dates);
         const stripe = require('stripe')('pk_test_Pbri8k4HUNcegrgjAohigZKF002BpByODh');
 
         try {
@@ -84,8 +90,8 @@ var bodyParser = require('body-parser');
         type: 'card',
         card: {
           number: req.body.cardNumber,
-          exp_month: req.body.month,
-          exp_year: req.body.year,
+          exp_month: dates,
+          exp_year: months,
           cvc: req.body.cvv,
         },
         billing_details: {
