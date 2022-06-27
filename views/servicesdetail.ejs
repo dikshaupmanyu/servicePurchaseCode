@@ -138,7 +138,7 @@ width:100%
                           <div class="input-group">
                             <label class="hide-sm">&nbsp;</label>
                             <!-- <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button> -->
-                            <button class="btn cmn_btn btn_primary" type="button">Submit</button>
+                            <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button>
                           </div>
                          </form>
 
@@ -237,7 +237,8 @@ $("#formoid").submit(function(event){
 
                 }else{
                   
-                   $(".successmsg").html('<span>"Your username or password is not correct."</span>');
+                  //  $(".successmsg").html('<span>"Your username or password is not correct."</span>');
+                   $(".successmsg").html(dataResultp.message);
                 
                  setTimeout(function(){$(".successmsg").empty()}, 3000);
 
@@ -486,35 +487,59 @@ var specialKeys = new Array();
           //  alert(conformPassword)
            var urls = $('#url').val();
            // alert(urls);
-           if(password === conformPassword){
-            //  alert("ok")
-             $.ajax({
-               type: 'POST',
-               url: 'https://apistest.tradetipsapp.com/api/appUser/newSignup',
-               data: {
-                 type:4,
-                 userName: userName,
-                email:email,
-                 password: password,            
-                 conformPassword: conformPassword,            
-               },
-               dataType:'json',
-               cache:false,
-               success: function(data){
-                 var datak = JSON.stringify(data); 
-                 var dataResult = JSON.parse(datak);
-                // console.log(dataResult);
-                 var mentor = dataResult.isMentor        
-                 // alert(mentor); 
-                 // alert(dataResult.accessToken)
-                 $(".successmsg").html('<span>Registartion successfully</span>');
-                  setTimeout(function(){$(".successmsg").empty()}, 2000);  
-               }  
-             });
+           if(userName == '' || email == '' || password == '' || conformPassword == ''){
+            $(".successmsg").html('<span>Please fill all the fields</span>');
+                    setTimeout(function(){$(".successmsg").empty()}, 2000);  
            }else{
-            //  alert('password nd conform password is not matching');
-             $(".successmsg").html('<span>password nd conform password is not matching</span>');
-           setTimeout(function(){$(".successmsg").empty()}, 2000);
+
+             if(password === conformPassword){
+              //  alert("ok")
+               $.ajax({
+                 type: 'POST',
+                 url: 'https://apistest.tradetipsapp.com/api/appUser/newSignupPayment',
+                 data: {
+                   type:4,
+                   userName: userName,
+                  email:email,
+                   password: password,            
+                   conformPassword: conformPassword,            
+                 },
+                 dataType:'json',
+                 cache:false,
+                 success: function(data){
+                   var datak = JSON.stringify(data); 
+                   var dataResultp = JSON.parse(datak);
+                  console.log(dataResultp);
+                  // alert(dataResultp)
+                  // if(dataResultp.status == true){
+                  //   $(".successmsg").html(dataResultp.message);
+                  //   setTimeout(function(){$(".successmsg").empty()}, 2000);
+                  //   setTimeout(function(){$(window.location.reload()).empty()}, 2100);  
+                  // }else{
+                    // alert('false')
+                    if(dataResultp.email){
+                      $(".successmsg").html(dataResultp.message);
+                    setTimeout(function(){$(".successmsg").empty()}, 2000);  
+                    setTimeout(function(){$(window.location.reload()).empty()}, 2100);  
+                    }
+                    else{
+
+                      $(".successmsg").html(dataResultp.message);
+                      setTimeout(function(){$(".successmsg").empty()}, 2000); 
+                      setTimeout(function(){$(window.location.reload()).empty()}, 2100);   
+                    }
+                  // }
+                  //  var mentor = dataResult.isMentor        
+                   // alert(mentor); 
+                   // alert(dataResult.accessToken)
+                  
+                 }  
+               });
+             }else{
+              //  alert('password nd conform password is not matching');
+               $(".successmsg").html('<span>password nd conform password is not matching</span>');
+             setTimeout(function(){$(".successmsg").empty()}, 2000);
+             }
            }
          });
 
@@ -523,5 +548,4 @@ var specialKeys = new Array();
 
       
 </script>
-
 
