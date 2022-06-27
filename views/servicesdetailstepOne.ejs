@@ -9,6 +9,11 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style1.css">
     <link rel="stylesheet" type="text/css" href="css/responsive1.css">
+    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet"
+    type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
   </head>
   <body>
 <style type="text/css">
@@ -51,7 +56,7 @@ width:100%
 
   <div class="app_main">
         
-           <div class="app_content">
+           <div class="app_content" style="padding-left:180px">
             <div class="dsbrd_container">
               <div class="dashboard_wrapper row">
                  <div class="dashboard_wrapper_left col" style="max-width: 60%;border: none;">
@@ -96,10 +101,10 @@ width:100%
 
                       </div>
                  </div>
-                 <div class="dashboard_wrapper_right col" style="max-width: 40%; padding-top:24px;">
+                 <div class="dashboard_wrapper_right col" style="max-width: 40%; padding-top:100px;">
                  
                         <div class="input-group">
-                            <img id="serviceImage" class="img-responsive" style="height: 200px;width: 400px;">
+                            <img id="serviceImage" class="img-responsive" style="height: 300px;width: 450px;">
                           </div>
                  </div>
               </div>
@@ -141,47 +146,57 @@ width:100%
                             <p style="color: white;">Card Information</p>
                            </div>
                        
+                           <div class="input-group">
+                            <!-- <label>Card Number</label> -->
+                             <input type='text' class="form-control" name="cardName" id="cardName" placeholder=" Full Name"   required="required"  >
+                             <!-- <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>   -->
+
+                          </div>
                           <div class="input-group">
                             <!-- <label>Card Number</label> -->
-                             <input type='text' class="form-control" name="cardNumber" id="cardNumber" placeholder="1234 1234 1234 1234" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required" >
+                             <input type='text' class="form-control" name="cardNumber" id="cardNumber" placeholder="Card Number" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required" >
                              <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>  
 
                           </div>
-                          <div class="input-group">
-                           <!--  <label>Expiration Date</label> -->
-                              <select class="form-control" id="month" name="month" required="required">
-                                <option>Select Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February </option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
+                          <div class="input-groups" style="display:flex">
+
+                            <div class="input-group">
+                             <!--  <label>Expiration Date</label> -->
+                                <!-- <select class="form-control" id="month" name="month" required="required">
+                                  <option>Select Month</option>
+                                  <option value="1">January</option>
+                                  <option value="2">February </option>
+                                  <option value="3">March</option>
+                                  <option value="4">April</option>
+                                  <option value="5">May</option>
+                                  <option value="6">June</option>
+                                  <option value="7">July</option>
+                                  <option value="8">August</option>
+                                  <option value="9">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>
+                              </select> -->
+
+                              <input type="month" class="form-control" name="" id="datepicker" placeholder="Ex.  Date   MM/YY">                              
+                            </div>
+                            <!-- <div class="input-group">
+                              <label>Expiration Year</label>
+                             <select class="form-control" id="year" name="year" required="required">
+                                <option>Select Year</option>
+                              <% for (i = 2022; i < 2035 ; i++) { %>
+                                <option value="<%= i %>"><%= i %></option>
+                              <% } %>
                             </select>
-                            
-                          </div>
-                          <div class="input-group">
-                           <!--  <label>Expiration Year</label> -->
-                           <select class="form-control" id="year" name="year" required="required">
-                              <option>Select Year</option>
-                            <% for (i = 2022; i < 2035 ; i++) { %>
-                              <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                          </select>
-                           
-                          </div>
-                          <div class="input-group">
-                           <!--  <label>Cvv Number</label> -->
-                          <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" required="required" maxlength="3"  onkeypress="return IsNumerics(event);" ondrop="return false;" onpaste="return false;">    
-                           <span id="errors" style="color: Red; display: none">* Input digits (0 - 9)</span>
-
-
+                             
+                            </div> -->
+                            <div class="input-group">
+                             <!--  <label>Cvv Number</label> -->
+                            <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV (Sec. Code)" required="required" maxlength="3"  onkeypress="return IsNumerics(event);" ondrop="return false;" onpaste="return false;">    
+                             <span id="errors" style="color: Red; display: none">* Input digits (0 - 9)</span>
+  
+  
+                            </div>
                           </div>
                           <div class="input-group">
                             <!-- <label>Zip Code</label> -->
@@ -302,5 +317,14 @@ var specialKeys = new Array();
   
   </script>
 
+
+<script>
+$(document).ready(function () {
+        $("#datepicker").datepicker({
+            minDate: new Date()
+        });
+    });
+
+</script>
 
 
