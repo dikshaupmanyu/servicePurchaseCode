@@ -125,36 +125,71 @@ width:100%
                            
                           </div>
                          
-                        <div class="prfl_tb_cntnt_bx">
-                        
-                        <p style="color: white;">Sign Up for This Service today</p>
-                       </div>
+                          <div style="display:flex; justify-content: space-between; align-items:baseline;" >
 
-                         <form method="POST" class="flex flex-col w-1/3">
-                          <div class="input-group">
-                            <input type="text" name="" placeholder="Choose a Username" class="form-control" id="uname" required="required">
-
+                            
+                            <form method="POST" class="flex flex-col w-1/3" style="width:100%">
+                               <div class="prfl_tb_cntnt_bx">
+                               
+                               <p style="color: white;">Sign Up for This Service today</p>
+                              </div>
+                              <div class="input-group">
+                                <input type="text" name="" placeholder="Choose a Username" class="form-control" id="uname" required="required">
+    
+                              </div>
+                              <div class="input-group">
+                                <input type="text" name="" placeholder="Enter a Email" class="form-control" id="email" required="required">
+    
+                              </div>
+                              <div class="input-group">
+                                <input type="password" name="" placeholder="Create a Password" class="form-control" id="pswrd" required="required">
+    
+                              </div>
+                              <div class="input-group">
+                                <input type="password" name="" placeholder="Confirm Password" class="form-control" id="cpswrd" required="required">
+    
+                              </div>
+                              <div class="input-group">
+                                <label class="hide-sm">&nbsp;</label>
+                                <!-- <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button> -->
+                                <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button>
+                              </div>
+                             </form>
+    
+                             
+                             <div  style="position:relative; left:60%; width:65%">
+    
+                              <div class="edit_profile_form">
+    
+                           
+                           <p style="color: white;">Already have a TradeTips account</p>
                           </div>
-                          <div class="input-group">
-                            <input type="text" name="" placeholder="Enter a Email" class="form-control" id="email" required="required">
-
+    
+                           <br>
+                                <form id="formoid" method="post" class="flex flex-col w-1/3" onsubmit="return false">
+                                         <div class="post_new_tips_wrapper">
+                                       
+                                         <div class="edit_profile_form">
+                                         <div class="input-group">
+                                           <input type="text" id="unames" name="userName"  placeholder="Enter Username or Email" class="form-control">
+    
+                                         </div>
+    
+                                         <div class="input-group">
+                                           <input type="text" id="pswrds" name="password" placeholder="Enter Password" class="form-control" >
+    
+                                         </div>
+                                         <div class="input-group">
+                                           <label class="hide-sm">&nbsp;</label>
+                                           <button class="btn cmn_btn btn_primary" type="submit">Submit</button>
+                                         </div>
+                                       </div>
+                                     </div>
+                                        </form>
+                            </div>
+    
+                            </div>
                           </div>
-                          <div class="input-group">
-                            <input type="password" name="" placeholder="Create a Password" class="form-control" id="pswrd" required="required">
-
-                          </div>
-                          <div class="input-group">
-                            <input type="password" name="" placeholder="Confirm Password" class="form-control" id="cpswrd" required="required">
-
-                          </div>
-                          <div class="input-group">
-                            <label class="hide-sm">&nbsp;</label>
-                            <!-- <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button> -->
-                            <button class="btn cmn_btn btn_primary" id="formRegister" type="button">Submit</button>
-                          </div>
-                         </form>
-
-                        </div>
 
                       </div>
                 </div>
@@ -172,36 +207,6 @@ width:100%
 
                           <br>
 
-                          <div style="position:relative;">
-
-                            <div class="edit_profile_form">
- 
-                         
-                         <p style="color: white;">Already have a TradeTips account</p>
-                        </div>
- 
-                         <br>
-                              <form id="formoid" method="post" class="flex flex-col w-1/3" onsubmit="return false">
-                                       <div class="post_new_tips_wrapper">
-                                     
-                                       <div class="edit_profile_form">
-                                       <div class="input-group">
-                                         <input type="text" id="unames" name="userName"  placeholder="Enter Username or Email" class="form-control">
- 
-                                       </div>
- 
-                                       <div class="input-group">
-                                         <input type="text" id="pswrds" name="password" placeholder="Enter Password" class="form-control" >
- 
-                                       </div>
-                                       <div class="input-group">
-                                         <label class="hide-sm">&nbsp;</label>
-                                         <button class="btn cmn_btn btn_primary" type="submit">Submit</button>
-                                       </div>
-                                     </div>
-                                   </div>
-                                      </form>
-                          </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
 
