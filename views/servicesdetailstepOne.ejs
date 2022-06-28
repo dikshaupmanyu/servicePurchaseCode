@@ -297,7 +297,7 @@ var specialKeys = new Array();
           document.getElementById("shortDescriptionService").innerHTML = dataResultp.descriptionOne;
           document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
           document.getElementById("mentorNameService").innerHTML = str;
-          document.getElementById("priceService").innerHTML = dataResultp.price;
+          document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           document.getElementById("prices").value = dataResultp.price * 100;
           if(dataResultp.imageDetails == null){
               document.getElementById("serviceImage").src = dataResultp.thumbnailImageUrl;
