@@ -34,9 +34,6 @@
   left:30%; */
 width:100%
 }
-#cardName{
-background-color: "#6e6c6c9";
-}
 
 /*.vertical {
             border-left: 1px solid white;
@@ -152,8 +149,7 @@ background-color: "#6e6c6c9";
                       </div>
                 </div>
                <!--  <div class = "vertical"></div> -->
-                 <div class="dashboard_wrapper_right col" style="max-width: 40%; padding-top:95px;">
-                 
+                 <div class="dashboard_wrapper_right col" style="max-width: 40%; padding-top:55px;">
                      <div class="post_new_tips_wrapper" style="background: none;">
                       <div class="edit_profile_form">  
                        <div class="input-group">
@@ -295,13 +291,13 @@ $("#formoid").submit(function(event){
                              
                               <div class="input-group">
                                 <!-- <label>Card Number</label> -->
-                                 <input type='text' class="form-control" name="cardName" id="cardName" placeholder=" Full Name" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required" readonly="readonly" style="background-color:#6d6969b0">
+                                 <input type='text' class="form-control" name="cardName" id="cardName" placeholder=" Full Name" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required" style="background-color:#6d6969b0" readonly >
                                  <!-- <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>   -->
     
                               </div>
                               <div class="input-group">
                                 <!-- <label>Card Number</label> -->
-                                 <input type='text' class="form-control" name="cardNumber" id="cardNumber" placeholder="Card Number" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required" readonly style="background-color:#6d6969b0">
+                                 <input type='text' class="form-control" name="cardNumber" id="cardNumber" placeholder="Card Number" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required="required" style="background-color:#6d6969b0" readonly >
                                  <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>  
     
                               </div>
@@ -340,7 +336,7 @@ $("#formoid").submit(function(event){
                                 </div> -->
                                 <div class="input-group">
                                  <!--  <label>Cvv Number</label> -->
-                                <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV  (Sec. Code)" required="required" maxlength="3"  onkeypress="return IsNumerics(event);" ondrop="return false;" onpaste="return false;" readonly style="background-color:#6d6969b0">    
+                                <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV  (Sec. Code)" required="required" maxlength="3"  onkeypress="return IsNumerics(event);" ondrop="return false;" onpaste="return false;" style="background-color:#6d6969b0" readonly>    
                                  <span id="errors" style="color: Red; display: none">* Input digits (0 - 9)</span>
       
       
@@ -348,14 +344,14 @@ $("#formoid").submit(function(event){
                               </div>
                               <div class="input-group">
                                 <!-- <label>Zip Code</label> -->
-                                <input type="text" class="form-control" placeholder="Zip Code" required="required" maxlength="5"  onkeypress="return IsNumericpincode(event);" ondrop="return false;" onpaste="return false;" readonly style="background-color:#6d6969b0">
+                                <input type="text" class="form-control" placeholder="Zip Code" required="required" maxlength="5"  onkeypress="return IsNumericpincode(event);" ondrop="return false;" onpaste="return false;" style="background-color:#6d6969b0" readonly>
                                  <span id="errorpincode" style="color: Red; display: none">* Input digits (0 - 9)</span>
                                
                               </div>
                              
                               <div class="input-group">
                                 <label class="hide-sm">&nbsp;</label>
-                                <button class="btn cmn_btn btn_primary" type="button" style="background-color:#6d6969b0">Purchase</button>
+                                <button class="btn cmn_btn btn_primary" type="button"style="background-color:#6d6969b0">Purchase</button>
                               </div>
                             </div>
     
