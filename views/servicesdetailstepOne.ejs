@@ -31,6 +31,13 @@ width:100%
 .prfl_tb_cntnt_bx{
   margin:0;
 }
+
+.secutityByStripe{
+  padding-left: 30px;
+  position: absolute;
+  left:100%;
+  top:12px;
+}
 </style>
 
 
@@ -52,7 +59,7 @@ width:100%
         </div>
       </div>
 
-  <div class="app_main">
+  <div class="app_main" style="background-color: #04133d;">
         
            <div class="app_content" style="padding-left: 0px;">
             <div class="dsbrd_container">
@@ -117,7 +124,7 @@ width:100%
             
 
 
-                <form action="payment" method="POST" style="width:60%; position:relative; left:25%">
+                <form action="payment" method="POST" style="width:60%; position:relative; left:50px">
 
                       <input type="text" name="userName" value="<%= name %>" style="display: none;">
                       <input type="text" name="emailData" value="<%= email %>" style="display: none;">
@@ -125,6 +132,9 @@ width:100%
                       <input type="text" name="amount" id="prices" style="display: none;">
                       <input type="text" name="serviceIds" value="<%= serviceIdDetail %>" style="display: none;">
 
+                      <div class="secutityByStripe">
+                        <img src="/images/Stripe_lock.png" alt="stripe-lock">
+                      </div>
                    
 
                       <div class="prfl_tb_cntnt_bx">
