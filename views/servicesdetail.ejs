@@ -173,7 +173,7 @@ var pasWrdd = $('#pswrds').val();
 
  // alert("neww");
 
- fetch("https://apistest.tradetipsapp.com/api/auth/appSignIn", requestOptions)
+ fetch("https://apis.tradetipsapp.com/api/auth/appSignIn", requestOptions)
    .then(response => response.json())
    .then(result => {
 
@@ -485,7 +485,7 @@ var specialKeys = new Array();
   var formdata = {serviceSubscriptionPlanId : subsids};
    $.ajax({
         type: 'POST',
-        url: 'https://apistest.tradetipsapp.com/api/serviceMentorSubscriptionPlanWeb/getServiceSubscriptionPlanById',
+        url: 'https://apis.tradetipsapp.com/api/serviceMentorSubscriptionPlanWeb/getServiceSubscriptionPlanById',
         data: formdata,
         success: function(data) {
            var datak = JSON.stringify(data);
@@ -503,7 +503,7 @@ var specialKeys = new Array();
           if(dataResultp.imageDetails == null){
               document.getElementById("serviceImage").src = dataResultp.thumbnailImageUrl;
           }else{
-               document.getElementById("serviceImage").src = "https://apistest.tradetipsapp.com" + dataResultp.imageDetails;
+               document.getElementById("serviceImage").src = "https://apis.tradetipsapp.com" + dataResultp.imageDetails;
           }
         
 
@@ -550,7 +550,7 @@ var specialKeys = new Array();
               //  alert("ok")
                $.ajax({
                  type: 'POST',
-                 url: 'https://apistest.tradetipsapp.com/api/appUser/newSignupPayment',
+                 url: 'https://apis.tradetipsapp.com/api/appUser/newSignupPayment',
                  data: {
                    type:4,
                    userName: userName,

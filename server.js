@@ -82,7 +82,7 @@ var bodyParser = require('body-parser');
       let dates = req.body.year;
           dates = dates.split("-")[1];
       // console.log(dates);
-        const stripe = require('stripe')('pk_test_Pbri8k4HUNcegrgjAohigZKF002BpByODh');
+        const stripe = require('stripe')('pk_live_7b9zLcAaGBVeu14tr9Jueznl00HCPZZOU1');
 
         try {
 
@@ -103,7 +103,7 @@ var bodyParser = require('body-parser');
         // console.log("hiiiii data " + paymentMethod);
 
         var options = { method: 'POST',
-            url: 'https://apistest.tradetipsapp.com/api/stripe/createStripePayment',
+            url: 'https://apis.tradetipsapp.com/api/stripe/createStripePayment',
             headers: 
              { 'postman-token': 'a1f3bad2-8aab-6d21-7162-d82350e953af',
                'cache-control': 'no-cache',
