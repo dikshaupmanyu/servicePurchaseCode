@@ -144,9 +144,9 @@ var bodyParser = require('body-parser');
 
   
 /////////////////////////////////////////
-var httpServer = http.createServer(app);
-// var httpsServer = https.createServer(credentials, app);
+// var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(port);
-// httpsServer.listen(port);
+// httpServer.listen(port);
+httpsServer.listen(port);
 console.log('The magic happens on port ' + port);
