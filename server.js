@@ -15,11 +15,11 @@ var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
 var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 /////////////////////////////////////////
-var httpServer = http.createServer(app);
-// var httpsServer = https.createServer(credentials, app);
+// var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(port);
-// httpsServer.listen(port);
+// httpServer.listen(port);
+httpsServer.listen(port);
 console.log('The magic happens on port ' + port);
 
  
@@ -82,13 +82,13 @@ console.log('The magic happens on port ' + port);
     // Moreover you can take more details from user
     // like Address, Name, etc from form
 
-    // console.log(req.body);
+     console.log(req.body);
 
-     let months = req.body.year;
-          months = months.split("-")[0];
+     let months = req.body.monthYear;
+          months = months.split("/")[0];
        // console.log(months);
-      let dates = req.body.year;
-          dates = dates.split("-")[1];
+      let dates = req.body.monthYear;
+          dates = dates.split("/")[1];
       // console.log(dates);
         const stripe = require('stripe')('pk_live_7b9zLcAaGBVeu14tr9Jueznl00HCPZZOU1');
 
@@ -98,8 +98,8 @@ console.log('The magic happens on port ' + port);
         type: 'card',
         card: {
           number: req.body.cardNumber,
-          exp_month: dates,
-          exp_year: months,
+          exp_month: months,
+          exp_year: dates,
           cvc: req.body.cvv,
         },
         billing_details: {
@@ -108,22 +108,22 @@ console.log('The magic happens on port ' + port);
         }
       });
 
-         console.log("hiiiii data " + JSON.stringify(paymentMethod));
+         // console.log("hiiiii data " + JSON.stringify(paymentMethod));
 
         var options = { method: 'POST',
-            url: 'https://apis.tradetipsapp.com/api/stripePayment/createStripePayment',
+            url: 'https://apis.tradetipsapp.com/api/stripe/createServiceSubscriptionPayment',
             headers: 
              { 'postman-token': 'a1f3bad2-8aab-6d21-7162-d82350e953af',
                'cache-control': 'no-cache',
                authorization: 'Bearer '+req.body.tokendata },     
                formData: { userName: req.body.userName,
                paymentId: paymentMethod.id,
-               subscriptionPlanId: req.body.serviceIds } };
+               serviceSubscriptionPlanId: req.body.serviceIds } };
 
           request(options, function (error, response, body) {
 
-             console.log("body data  " + JSON.stringify(response)); 
-             console.log("error data " + error);
+             // console.log("body data  " + JSON.stringify(response)); 
+             // console.log("error data " + error);
           	if(response){
 
           		
