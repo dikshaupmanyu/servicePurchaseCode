@@ -108,10 +108,10 @@ console.log('The magic happens on port ' + port);
         }
       });
 
-        // console.log("hiiiii data " + paymentMethod);
+         console.log("hiiiii data " + JSON.stringify(paymentMethod));
 
         var options = { method: 'POST',
-            url: 'https://apis.tradetipsapp.com/api/stripe/createStripePayment',
+            url: 'https://apis.tradetipsapp.com/api/stripePayment/createStripePayment',
             headers: 
              { 'postman-token': 'a1f3bad2-8aab-6d21-7162-d82350e953af',
                'cache-control': 'no-cache',
@@ -122,8 +122,11 @@ console.log('The magic happens on port ' + port);
 
           request(options, function (error, response, body) {
 
-        
+             console.log("body data  " + JSON.stringify(response)); 
+             console.log("error data " + error);
           	if(response){
+
+          		
 
           		res.render("success.ejs" , {userName : req.body.userName, userEmail : req.body.emailData , service : req.body.serviceIds , mentorName : req.body.mentorName});
           	}
