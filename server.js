@@ -14,8 +14,13 @@ var bodyParser = require('body-parser');
 var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
 var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
+/////////////////////////////////////////
+// var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
-
+// httpServer.listen(port);
+httpsServer.listen(port);
+console.log('The magic happens on port ' + port);
 
  
 	app.use(compression());
@@ -146,10 +151,3 @@ var credentials = {key: privateKey, cert: certificate};
 });
 
   
-/////////////////////////////////////////
-// var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
-
-// httpServer.listen(port);
-httpsServer.listen(port);
-console.log('The magic happens on port ' + port);
