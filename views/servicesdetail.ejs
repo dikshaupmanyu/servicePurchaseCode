@@ -15,7 +15,11 @@
   </head>
   <body>
 <style type="text/css">
-  .successmsg
+  .successmsg1
+{ color: #fff;
+   /* padding-left: 350px; */
+}
+  .successmsg2
 { color: #fff;
    padding-left: 350px;
 }
@@ -77,13 +81,7 @@ width:100%
             <h3 style="color: white;">TradeTips</h3>
           </a>
         </div>
-        <div class="app_header_content">
-          <div class="dsbrd_container">
-            <div class="successmsg"></div>
-          
-           
-          </div>
-        </div>
+
       </div>
 
   <div class="app_main" style="background-color: #04133d;">
@@ -189,9 +187,9 @@ var pasWrdd = $('#pswrds').val();
              // alert(dataResultp.accessToken);
              if(dataResultp.accessToken){
 
-               $(".successmsg").html('<span>"Login successfully '+dataResultp.userName+' !!"</span>');
+               $(".successmsg1").html('<span>"Login successfully '+dataResultp.userName+' !!"</span>');
              
-              setTimeout(function(){$(".successmsg").empty()}, 3000);
+              setTimeout(function(){$(".successmsg1").empty()}, 3000);
 
                setTimeout(function(){
                 // window.location.reload(1);
@@ -201,14 +199,14 @@ var pasWrdd = $('#pswrds').val();
              }else{
                
                //  $(".successmsg").html('<span>"Your username or password is not correct."</span>');
-                $(".successmsg").html(dataResultp.message);
+                $(".successmsg1").html(dataResultp.message);
              
-              setTimeout(function(){$(".successmsg").empty()}, 3000);
+              setTimeout(function(){$(".successmsg1").empty()}, 2000);
 
                setTimeout(function(){
                 // window.location.reload(1);
                 window.location.href = "/servicesdetail?id="+serviceIds; 
-                }, 2000);
+                }, 2100);
 
              }
             
@@ -233,6 +231,13 @@ var pasWrdd = $('#pswrds').val();
                     <br>
                     <br>
                     <div class="dashboard_wrapper_left col" style="max-width: 60%;">
+                      <div class="app_header_content">
+                        <div class="dsbrd_container">
+                          <div class="successmsg2"></div>
+                        
+                         
+                        </div>
+                      </div>
                       <br>
                       <div class="prfl_tb_cntnt_bx">
                                 <p style="color:  var(--primary);">Sign Up for This Service Today</p>
@@ -277,6 +282,13 @@ var pasWrdd = $('#pswrds').val();
 <br>
 <br>
 <div class="dashboard_wrapper_right col" style="max-width: 40%;">
+  <div class="app_header_content">
+    <div class="dsbrd_container">
+      <div class="successmsg1"></div>
+    
+     
+    </div>
+  </div>
   <br>
               <div class="prfl_tb_cntnt_bx">
 
@@ -565,8 +577,8 @@ var specialKeys = new Array();
            var urls = $('#url').val();
            // alert(urls);
            if(userName == '' || email == '' || password == '' || conformPassword == ''){
-            $(".successmsg").html('<span>Please fill all the fields</span>');
-                    setTimeout(function(){$(".successmsg").empty()}, 2000);  
+            $(".successmsg2").html('<span>Please fill all the fields</span>');
+                    setTimeout(function(){$(".successmsg2").empty()}, 2000);  
            }else{
 
              if(password === conformPassword){
@@ -595,8 +607,8 @@ var specialKeys = new Array();
                   // }else{
                     // alert('false')
                     if(dataResultp.email){
-                      $(".successmsg").html(dataResultp.message);
-                     setTimeout(function(){$(".successmsg").empty()}, 3000);
+                      $(".successmsg2").html(dataResultp.message);
+                     setTimeout(function(){$(".successmsg2").empty()}, 3000);
 
                   setTimeout(function(){
                    // window.location.reload(1);
@@ -605,8 +617,8 @@ var specialKeys = new Array();
                     }
                     else{
 
-                      $(".successmsg").html(dataResultp.message);
-                      setTimeout(function(){$(".successmsg").empty()}, 2000); 
+                      $(".successmsg2").html(dataResultp.message);
+                      setTimeout(function(){$(".successmsg2").empty()}, 2000); 
                       setTimeout(function(){$(window.location.reload()).empty()}, 2100);   
                     }
                   // }
@@ -618,8 +630,9 @@ var specialKeys = new Array();
                });
              }else{
               //  alert('password nd conform password is not matching');
-               $(".successmsg").html('<span>Password and Confirm Password is not matching</span>');
-             setTimeout(function(){$(".successmsg").empty()}, 2000);
+               $(".successmsg2").html('<span>Password and Confirm Password is not matching</span>');
+             setTimeout(function(){$(".successmsg2").empty()}, 2000);
+             setTimeout(function(){$(window.location.reload()).empty()}, 2100);   
              }
            }
          });
