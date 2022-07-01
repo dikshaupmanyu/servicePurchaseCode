@@ -111,11 +111,11 @@ console.log('The magic happens on port ' + port);
          // console.log("hiiiii data " + JSON.stringify(paymentMethod));
 
         var options = { method: 'POST',
-            url: 'https://apis.tradetipsapp.com/api/stripe/createServiceSubscriptionPayment',
+            url: 'https://apis.tradetipsapp.com/api/stripePayment/createServiceSubscriptionPayment',
             headers: 
              { 'postman-token': 'a1f3bad2-8aab-6d21-7162-d82350e953af',
-               'cache-control': 'no-cache',
-               authorization: 'Bearer '+req.body.tokendata },     
+               'cache-control': 'no-cache'},
+               // authorization: 'Bearer '+req.body.tokendata },     
                formData: { userName: req.body.userName,
                paymentId: paymentMethod.id,
                serviceSubscriptionPlanId: req.body.serviceIds } };

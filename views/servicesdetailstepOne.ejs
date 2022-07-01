@@ -462,24 +462,24 @@ var specialKeys = new Array();
 
  function validate(coupon) {
 
- // alert(coupon);
+  alert(coupon);
 
       $.ajax({
            type: 'POST',
-           url: 'https://apistest.tradetipsapp.com/api/stripe/validateCoupon?couponId='+coupon,
-           headers: {
-             Authorization: "Bearer "+ tokens ,
-           },
+           url: 'https://apis.tradetipsapp.com/api/stripe/validateCoupon?couponId='+coupon,
+           // headers: {
+           //   Authorization: "Bearer "+ tokens ,
+           // },
            // async:false,
            // data: formdata,
            processData: false,
            success: function(data, textStatus, jqXHR) {
-           // console.log(data);
+           // alert(data.percent_off);
            // console.log(data.id);
            // console.log(data.percent_off);
            var finalpvals = data.percent_off;
            // alert(finalpvals);
-           var pricess = $('#amountSubscription').val();
+           var pricess = $('#prices').val();
            // alert(pricess);
            var fdiscount = pricess * finalpvals / 100 ;
            // alert(fdiscount);
