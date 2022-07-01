@@ -198,15 +198,6 @@ input.exp {
                               <input maxlength='5' class="form-control" placeholder="Ex. Date  MM/YY" type="text" onkeyup="formatString(event);" style="margin-right: 10px;;">
                               <!-- end -->
 
-
-                              <!-- example 2 start -->
-
-                              <!-- <div class="exp-wrapper">
-                              <input autocomplete="off" class=" form-control" id="month" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
-                                <input autocomplete="off" class=" form-control" id="year" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />                        
-                              </div> -->
-
-                              <!-- end -->
                             </div>
                            
                             <div class="input-group">
@@ -226,9 +217,9 @@ input.exp {
 
                           <spam style="color:#a3a3a3b8; margin-left: 15px;">Have a Promo Code ?</spam>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter Promo Code" required="required" maxlength="5"  onkeypress="return IsNumericpincode(event);" ondrop="return false;" onpaste="return false;" style="margin-right: 10px;;">
+                            <input type="text" class="form-control" name="text1" placeholder="Enter Promo Code" onkeypress="return IsNumericpincode(event);" ondrop="return false;" onpaste="return false;" style="margin-right: 10px;;">
                              <span id="errorpincode" style="color: Red; display: none">* Input digits (0 - 9)</span>
-                             <button class="btn cmn_btn btn_primary" type="submit">Apply</button>
+                             <button class="btn cmn_btn btn_primary" type="submit"  onclick="validate(document.getElementsByName('text1')[0].value)">Apply</button>
                           </div>
                          
                           <div class="input-group">

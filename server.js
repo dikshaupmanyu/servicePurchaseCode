@@ -151,3 +151,12 @@ console.log('The magic happens on port ' + port);
 });
 
   
+
+/////////////////////////////////////////
+// var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+// httpServer.listen(port);
+httpsServer.listen(port);
+console.log('The magic happens on port ' + port);
+
