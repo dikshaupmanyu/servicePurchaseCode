@@ -84,6 +84,8 @@ console.log('The magic happens on port ' + port);
 
      console.log(req.body);
 
+      var couponId = req.body.text1;
+
      let months = req.body.monthYear;
           months = months.split("/")[0];
        // console.log(months);
@@ -118,7 +120,8 @@ console.log('The magic happens on port ' + port);
                // authorization: 'Bearer '+req.body.tokendata },     
                formData: { userName: req.body.userName,
                paymentId: paymentMethod.id,
-               serviceSubscriptionPlanId: req.body.serviceIds } };
+               serviceSubscriptionPlanId: req.body.serviceIds,
+     		  couponId : req.body.text1 } };
 
           request(options, function (error, response, body) {
 

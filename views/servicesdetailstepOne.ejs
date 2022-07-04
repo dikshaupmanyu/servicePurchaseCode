@@ -217,9 +217,9 @@ input.exp {
 
                           <spam style="color:#a3a3a3b8; margin-left: 15px;">Have a Promo Code ?</spam>
                           <div class="input-group">
-                            <input type="text" class="form-control" name="text1" placeholder="Enter Promo Code" ondrop="return false;" onpaste="return false;" style="margin-right: 10px;;">
+                            <input type="text" class="form-control" name="text1" placeholder="Enter Promo Code" style="margin-right: 10px;;">
                              <!-- <span id="errorpincode" style="color: Red; display: none">* Input digits (0 - 9)</span> -->
-                             <button class="btn cmn_btn btn_primary" type="submit"  onclick="validate(document.getElementsByName('text1')[0].value)">Apply</button>
+                             <button class="btn cmn_btn btn_primary" type="button"  onclick="validate(document.getElementsByName('text1')[0].value)">Apply</button>
                           </div>
                          
                           <div class="input-group">
@@ -462,17 +462,14 @@ var specialKeys = new Array();
 
  function validate(coupon) {
 
-  alert(coupon);
+  // alert(coupon);
+
+  var formdata = {couponId : coupon};
 
       $.ajax({
            type: 'POST',
-           url: 'https://apis.tradetipsapp.com/api/stripe/validateCoupon?couponId='+coupon,
-           // headers: {
-           //   Authorization: "Bearer "+ tokens ,
-           // },
-           // async:false,
-           // data: formdata,
-           processData: false,
+           url: 'https://apis.tradetipsapp.com/api/stripePayment/validateCoupon',
+           data: formdata,
            success: function(data, textStatus, jqXHR) {
            // alert(data.percent_off);
            // console.log(data.id);
@@ -483,11 +480,11 @@ var specialKeys = new Array();
            // alert(pricess);
            var fdiscount = pricess * finalpvals / 100 ;
            // alert(fdiscount);
-           document.getElementById('demo').innerHTML = "$" + fdiscount;
-           document.getElementById('demos').innerHTML = "$" + fdiscount;
+           document.getElementById('prices').value = fdiscount;
            window.alert("Coupon Code Accepted! Click the Order button!");
           },
           error: function(errMsg) {
+              // alert(JSON.stringify(errMsg));
                window.alert("Sorry, The Coupon Code you entered is invalid. Please check and try again!");
            }
 
