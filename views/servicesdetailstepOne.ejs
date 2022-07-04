@@ -23,7 +23,9 @@
 }
   .successmsg3
 { color: #fff;
-   padding-left: 350px;
+   padding-left: 50px;
+   padding-bottom: 30px;
+
 }
 
 .edit_profile_form{
@@ -155,13 +157,7 @@ input.exp {
           <br>
           <br>
 
-          <div class="app_header_content">
-            <div class="dsbrd_container">
-              <div class="successmsg3"></div>
-            
-             
-            </div>
-          </div>
+
 
           <div class="dsbrd_container" style="margin-left: 15px;">
 
@@ -234,7 +230,14 @@ input.exp {
                             <input type="text" class="form-control" name="text1" placeholder="Enter Promo Code" style="margin-right: 10px;;">
                              <!-- <span id="errorpincode" style="color: Red; display: none">* Input digits (0 - 9)</span> -->
                              <button class="btn cmn_btn btn_primary" type="button"  onclick="validate(document.getElementsByName('text1')[0].value)">Apply</button>
-                          </div>
+                            </div>
+                            <div class="app_header_content">
+                              <div class="dsbrd_container">
+                                <div class="successmsg3"></div>
+                              
+                               
+                              </div>
+                            </div>
                          
                           <div class="input-group">
                             <label class="hide-sm" style="width:40%">&nbsp;</label>
@@ -496,7 +499,7 @@ var specialKeys = new Array();
            // alert(fdiscount);
            document.getElementById('prices').value = fdiscount;
           //  window.alert("Coupon Code Accepted! Click the Order button!");
-           $(".successmsg3").html("Coupon Code Accepted! Click the Order button!");
+           $(".successmsg3").html("Coupon Code Accepted! Click the Purchase button!");
                      setTimeout(function(){$(".successmsg3").empty()}, 3000);
           },
           error: function(errMsg) {
