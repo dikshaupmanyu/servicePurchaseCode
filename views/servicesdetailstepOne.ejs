@@ -23,7 +23,7 @@
 }
   .successmsg3
 { color: #fff;
-   padding-left: 50px;
+   padding-left: 20px;
    padding-bottom: 30px;
 
 }
@@ -234,13 +234,16 @@ input.exp {
                             <div class="app_header_content">
                               <div class="dsbrd_container">
                                 <div class="successmsg3"></div>
-                              
+                                <!-- <span style="color: white;" id="priceService">&macr;</span> -->
                                
                               </div>
                             </div>
                          
                           <div class="input-group">
-                            <label class="hide-sm" style="width:40%">&nbsp;</label>
+                            <label class="hide-sm" style="width:40%; padding-left: 15px;">Total  
+                            <!-- <label class="hide-sm">Total</label> -->
+                              <span style="color: white;" id="priceServices"></span>
+                          </label>
                             <button class="btn cmn_btn btn_primary" type="submit">Purchase</button>
                           </div>
                         </div>
@@ -355,6 +358,7 @@ var specialKeys = new Array();
           document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
           document.getElementById("mentorNameService").innerHTML = str;
           document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);
+          document.getElementById("priceServices").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           document.getElementById("prices").value = dataResultp.price * 100;
           if(dataResultp.imageDetails == null){
               document.getElementById("serviceImage").src = dataResultp.thumbnailImageUrl;
@@ -494,13 +498,14 @@ var specialKeys = new Array();
            var finalpvals = data.percent_off;
            // alert(finalpvals);
            var pricess = $('#prices').val();
-           // alert(pricess);
+          //  alert(pricess);
            var fdiscount = pricess * finalpvals / 100 ;
-           // alert(fdiscount);
+          //  alert(fdiscount);
            document.getElementById('prices').value = fdiscount;
           //  window.alert("Coupon Code Accepted! Click the Order button!");
-           $(".successmsg3").html("Coupon Code Accepted! Click the Purchase button!");
-                     setTimeout(function(){$(".successmsg3").empty()}, 3000);
+          //  $(".successmsg3").html("<span style='padding-left:11px'>$9.00</span>"+ "<br>"+"-"+"    "+'<span>${fdiscount} </span>' + "<span style='width:5px'>&nbsp; </span>" + " Discount applied. Please continue your purchase.");
+           $(".successmsg3").html(`<span style='padding-left:11px'>${'$'+pricess}</span>`+ "<br>"+"-"+"    "+`<span>${'$'+fdiscount} </span>` + "<span style='width:5px'>&nbsp; </span>" + " Discount applied. Please continue your purchase.");
+                     setTimeout(function(){$(".successmsg3").empty()}, 1200000);
           },
           error: function(errMsg) {
               // alert(JSON.stringify(errMsg));
