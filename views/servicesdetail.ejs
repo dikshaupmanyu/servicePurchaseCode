@@ -412,10 +412,19 @@ var pasWrdd = $('#pswrds').val();
                                  <button class="btn cmn_btn btn_primary" type="submit" style="background-color:#6d6969b0; border-color:#6d6969b0; color:darkgrey;" >Apply</button>
                               </div>
                              
+                              <div class="input-groups"  style="display:flex">
+
+                                <label class="hide-sm" style="width:40%; padding-left: 15px; font-size: large; color:#aaa">Total  
+                                <!-- <label class="hide-sm">Total</label> -->
+                                  <span style="color: white;" id="priceServicess"></span>
+                              </label>
                               <div class="input-group">
-                                <label class="hide-sm"  style="width:38.5%">&nbsp;</label>
-                                <button class="btn cmn_btn btn_primary" type="button"style="background-color:#6d6969b0; border-color:#6d6969b0; color:darkgrey;">Purchase</button>
+                                <label class="hide-sm" style="width:15%;">  
+                                  &nbsp;
+                                </label>
+                                <button class="btn cmn_btn btn_primary" type="submit">Purchase</button>
                               </div>
+                            </div>
                             </div>
     
                           </div>
@@ -535,6 +544,7 @@ var specialKeys = new Array();
           document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
           document.getElementById("mentorNameService").innerHTML = str;
           document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);
+          document.getElementById("priceServicess").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           if(dataResultp.imageDetails == null){
               document.getElementById("serviceImage").src = dataResultp.thumbnailImageUrl;
           }else{
