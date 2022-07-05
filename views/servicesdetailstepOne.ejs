@@ -23,9 +23,9 @@
 }
   .successmsg3
 { color: #fff;
-   padding-left: 20px;
+   padding-left: 45px;
    padding-bottom: 30px;
-
+  font-size: large;
 }
 
 .edit_profile_form{
@@ -74,6 +74,9 @@ input.exp {
   font-size: 14px;
 }
 
+.input-groups{
+  display: flex;
+}
 </style>
 
 
@@ -200,7 +203,7 @@ input.exp {
                              <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>  
 
                           </div>
-                          <div class="input-groups" style="display:flex">
+                          <div class="input-groups" >
 
                             <div class="input-group">
 
@@ -231,21 +234,27 @@ input.exp {
                              <!-- <span id="errorpincode" style="color: Red; display: none">* Input digits (0 - 9)</span> -->
                              <button class="btn cmn_btn btn_primary" type="button"  onclick="validate(document.getElementsByName('text1')[0].value)">Apply</button>
                             </div>
-                            <div class="app_header_content">
-                              <div class="dsbrd_container">
+                            <!-- <div class="app_header_content">
+                              <div class="dsbrd_container"> -->
                                 <div class="successmsg3"></div>
                                 <!-- <span style="color: white;" id="priceService">&macr;</span> -->
                                
+                              <!-- </div>
+                            </div> -->
+                         
+                            <div class="input-groups">
+
+                                <label class="hide-sm" style="width:40%; padding-left: 15px; font-size: large; color:#aaa">Total  
+                                <!-- <label class="hide-sm">Total</label> -->
+                                  <span style="color: white;" id="priceServices"></span>
+                              </label>
+                              <div class="input-group">
+                                <label class="hide-sm" style="width:15%;">  
+                                  &nbsp;
+                                </label>
+                                <button class="btn cmn_btn btn_primary" type="submit">Purchase</button>
                               </div>
                             </div>
-                         
-                          <div class="input-group">
-                            <label class="hide-sm" style="width:40%; padding-left: 15px;">Total  
-                            <!-- <label class="hide-sm">Total</label> -->
-                              <span style="color: white;" id="priceServices"></span>
-                          </label>
-                            <button class="btn cmn_btn btn_primary" type="submit">Purchase</button>
-                          </div>
                         </div>
 
                       </div>
@@ -358,7 +367,7 @@ var specialKeys = new Array();
           document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
           document.getElementById("mentorNameService").innerHTML = str;
           document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);
-          document.getElementById("priceServices").innerHTML = parseFloat(dataResultp.price).toFixed(2);
+           document.getElementById("priceServices").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           document.getElementById("prices").value = dataResultp.price * 100;
           if(dataResultp.imageDetails == null){
               document.getElementById("serviceImage").src = dataResultp.thumbnailImageUrl;
@@ -493,19 +502,26 @@ var specialKeys = new Array();
            data: formdata,
            success: function(data, textStatus, jqXHR) {
            // alert(data.percent_off);
-           // console.log(data.id);
+           console.log(data);
+          
            // console.log(data.percent_off);
            var finalpvals = data.percent_off;
-           // alert(finalpvals);
+          //  alert(finalpvals);
            var pricess = $('#prices').val();
+          //  var pricess = ActualP.val();
+
           //  alert(pricess);
            var fdiscount = pricess * finalpvals / 100 ;
           //  alert(fdiscount);
-           document.getElementById('prices').value = fdiscount;
-          //  window.alert("Coupon Code Accepted! Click the Order button!");
-          //  $(".successmsg3").html("<span style='padding-left:11px'>$9.00</span>"+ "<br>"+"-"+"    "+'<span>${fdiscount} </span>' + "<span style='width:5px'>&nbsp; </span>" + " Discount applied. Please continue your purchase.");
-           $(".successmsg3").html(`<span style='padding-left:11px'>${'$'+pricess}</span>`+ "<br>"+"-"+"    "+`<span>${'$'+fdiscount} </span>` + "<span style='width:5px'>&nbsp; </span>" + " Discount applied. Please continue your purchase.");
-                     setTimeout(function(){$(".successmsg3").empty()}, 1200000);
+          if(data.valid ==true){
+            var Damount = pricess - finalpvals
+            // alert(Damount)
+            document.getElementById('prices').value = fdiscount;
+            $(".successmsg3").html(`<span style='padding-left:11px'>${'$'+pricess}</span>`+ "<br>"+"-"+"    "+`<span>${'$'+finalpvals} </span>` + "<span style='width:5px'>&nbsp; </span>" + " Discount applied. Please continue your purchase.");
+                      setTimeout(function(){$(".successmsg3").empty()}, 1200000);
+
+                       document.getElementById("priceServices").innerHTML = parseFloat(Damount).toFixed(2);
+          }
           },
           error: function(errMsg) {
               // alert(JSON.stringify(errMsg));
