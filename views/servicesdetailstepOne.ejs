@@ -383,7 +383,7 @@
     }
 
     function checkPurchase(form){
-      alert("hii");
+      // alert("hii");
       var tokendata = "<%= tokens %>";
       var loginIds = "<%= id %>";
       var subsids = "<%= serviceIdDetail %>";
@@ -408,7 +408,13 @@
                             }else{
                                 for( var i=0;i<dataResultps.serviceSubscriptions.length; i++){
                                    if(dataResultps.serviceSubscriptions[i].serviceSubscriptionPlanId == subsids && dataResultps.serviceSubscriptions[i].stripeSubscriptionStatus == "active"){
-                                    alert("You Already Purchased this Service !!");
+                                    // alert("You Already Purchased this Service !!");
+                                    $(".successmsg3").html(
+                                      "You Already Purchased this Service !!"
+                                      );
+                                      setTimeout(function () {
+                                        $(".successmsg3").empty();
+                                      }, 3000);
                                    } else {
                                     form.submit();
                                     // alert("Purchase  Allow !!");
