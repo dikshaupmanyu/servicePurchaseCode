@@ -180,11 +180,17 @@
                 method="POST"
                 class="flex flex-col w-1/3"
                 style="width: 60%; position: relative"
-              >
+                onSubmit="handleFormSubmit(this); return false;" >
                 <input
                   type="text"
                   name="userName"
                   value="<%= name %>"
+                  style="display: none"
+                />
+                <input
+                  type="text"
+                  name="userId"
+                  value="<%= id %>"
                   style="display: none"
                 />
                 <input
@@ -370,6 +376,52 @@
       </div>
     </div>
     <!-- Header End -->
+
+    <script type="text/javascript">
+      function handleFormSubmit(form) {
+      checkPurchase(form);
+    }
+
+    function checkPurchase(form){
+      alert("hii");
+      var tokendata = "<%= tokens %>";
+      var loginIds = "<%= id %>";
+      var subsids = "<%= serviceIdDetail %>";
+
+      $.ajax({
+                         type: 'POST',
+                         url: 'https://apis.tradetipsapp.com/api/serviceMentorSubscriptionPlan/getAllTypeServicesForUser',
+                         headers: {
+                            Authorization: 'Bearer '+ tokendata
+                          },
+                         data: {
+                           userId: loginIds       
+                         },
+                        success: function(data){
+                           var dataks = JSON.stringify(data); 
+                           var dataResultps = JSON.parse(dataks);
+                            // alert(dataResultps.serviceSubscriptions);
+                            // alert(dataResultps.serviceSubscriptions.length);
+                            if(dataResultps.serviceSubscriptions.length == 0){
+                               // alert("Purchase Allow !!");
+                               form.submit();
+                            }else{
+                                for( var i=0;i<dataResultps.serviceSubscriptions.length; i++){
+                                   if(dataResultps.serviceSubscriptions[i].serviceSubscriptionPlanId == subsids && dataResultps.serviceSubscriptions[i].stripeSubscriptionStatus == "active"){
+                                    alert("You Already Purchased this Service !!");
+                                   } else {
+                                    form.submit();
+                                    // alert("Purchase  Allow !!");
+                                   }
+                                }
+                              
+                            }
+
+                         }
+
+                       });
+      }
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -602,6 +654,9 @@
   function validate(coupon) {
     // count++;
     // if (count == 1) {
+
+
+
     var formdata = { couponId: coupon };
 
     $.ajax({
