@@ -144,6 +144,10 @@
                       <span style="color: white" id="mentorNameService"></span>
                     </div>
                     <div class="input-group">
+                            <label>Frequency</label>
+                            <span style="color: white" id="frequncyService"></span>
+                    </div>
+                    <div class="input-group">
                       <label>Price</label>
                       <span style="color: white" id="priceService"></span>
                     </div>
@@ -522,6 +526,7 @@
       document.getElementById("longDescriptionService").innerHTML =
         dataResultp.descriptionTwo;
       document.getElementById("mentorNameService").innerHTML = str;
+      document.getElementById("frequncyService").innerHTML = dataResultp.frequency;
       document.getElementById("priceService").innerHTML = parseFloat(
         dataResultp.price
       ).toFixed(2);

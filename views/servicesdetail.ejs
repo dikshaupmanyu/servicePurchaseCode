@@ -118,6 +118,10 @@ width:100%
                             <label>Mentor Name</label>
                             <span style="color: white" id="mentorNameService"></span>
                           </div>
+                           <div class="input-group">
+                            <label>Frequency</label>
+                            <span style="color: white" id="frequncyService"></span>
+                          </div>
                           <div class="input-group">
                             <label>Price</label>
                             <span style="color: white;" id="priceService"></span>
@@ -543,6 +547,7 @@ var specialKeys = new Array();
           document.getElementById("shortDescriptionService").innerHTML = dataResultp.descriptionOne;
           document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
           document.getElementById("mentorNameService").innerHTML = str;
+          document.getElementById("frequncyService").innerHTML = dataResultp.frequency;
           document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           document.getElementById("priceServicess").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           if(dataResultp.imageDetails == null){
@@ -608,7 +613,7 @@ var specialKeys = new Array();
                  success: function(data){
                    var datak = JSON.stringify(data); 
                    var dataResultp = JSON.parse(datak);
-                  
+
                   // alert(JSON.stringify(dataResultp));
                   // alert(dataResultp)
                   // if(dataResultp.status == true){
