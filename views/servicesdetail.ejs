@@ -104,14 +104,14 @@ width:100%
                             <label>Name of Service</label>
                              <span style="color: white;" id="nameService"></span>
                           </div>
-                          <div class="input-group">
-                            <label>Short descritpion</label>
+                          <div class="input-group" style="display: inline;">
+                            <label>Descritpion</label>
                              <span style="color: white;" id="shortDescriptionService"></span>
-                            
                           </div>
+
                           <div class="input-group">
-                            <label>Long Description</label>
-                            <span style="color: white;" id="longDescriptionService"></span>
+                          <!--   <label>Long Description</label>
+                            <span style="color: white;" id="longDescriptionService"></span> -->
                            
                           </div>
                           <div class="input-group">
@@ -545,7 +545,7 @@ var specialKeys = new Array();
           document.getElementById("typeService").innerHTML = dataResultp.serviceTypeMaster.description;
           document.getElementById("nameService").innerHTML = dataResultp.title;
           document.getElementById("shortDescriptionService").innerHTML = dataResultp.descriptionOne;
-          document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
+          // document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
           document.getElementById("mentorNameService").innerHTML = str;
           document.getElementById("frequncyService").innerHTML = dataResultp.frequency;
           document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);

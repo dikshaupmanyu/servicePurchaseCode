@@ -125,20 +125,16 @@
                       <label>Name of Service</label>
                       <span style="color: white" id="nameService"></span>
                     </div>
-                    <div class="input-group">
-                      <label>Short descritpion</label>
-                      <span
-                        style="color: white"
-                        id="shortDescriptionService"
-                      ></span>
-                    </div>
-                    <div class="input-group">
-                      <label>Long Description</label>
-                      <span
-                        style="color: white"
-                        id="longDescriptionService"
-                      ></span>
-                    </div>
+                   <div class="input-group" style="display: inline;">
+                            <label>Descritpion</label>
+                             <span style="color: white;" id="shortDescriptionService"></span>
+                          </div>
+
+                          <div class="input-group">
+                          <!--   <label>Long Description</label>
+                            <span style="color: white;" id="longDescriptionService"></span> -->
+                           
+                          </div>
                     <div class="input-group">
                       <label>Mentor Name</label>
                       <span style="color: white" id="mentorNameService"></span>
@@ -523,8 +519,8 @@
       document.getElementById("nameService").innerHTML = dataResultp.title;
       document.getElementById("shortDescriptionService").innerHTML =
         dataResultp.descriptionOne;
-      document.getElementById("longDescriptionService").innerHTML =
-        dataResultp.descriptionTwo;
+      // document.getElementById("longDescriptionService").innerHTML =
+        // dataResultp.descriptionTwo;
       document.getElementById("mentorNameService").innerHTML = str;
       document.getElementById("frequncyService").innerHTML = dataResultp.frequency;
       document.getElementById("priceService").innerHTML = parseFloat(
