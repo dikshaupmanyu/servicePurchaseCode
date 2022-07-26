@@ -547,7 +547,19 @@ var specialKeys = new Array();
           document.getElementById("shortDescriptionService").innerHTML = dataResultp.descriptionOne;
           // document.getElementById("longDescriptionService").innerHTML = dataResultp.descriptionTwo;
           document.getElementById("mentorNameService").innerHTML = str;
-          document.getElementById("frequncyService").innerHTML = dataResultp.frequency;
+          if(dataResultp.frequency == "0"){
+               document.getElementById("frequncyService").innerHTML = "One Time";
+          }else if(dataResultp.frequency == "1"){
+                document.getElementById("frequncyService").innerHTML = "Daily";
+          }else if(dataResultp.frequency == "7"){
+              document.getElementById("frequncyService").innerHTML = "Weekly";
+          }else if(dataResultp.frequency == "15"){
+              document.getElementById("frequncyService").innerHTML = "Bi-weekly";
+          }else if(dataResultp.frequency == "30"){
+              document.getElementById("frequncyService").innerHTML = "Monthly";
+          }else {
+              document.getElementById("frequncyService").innerHTML = "Yearly";
+          }
           document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           document.getElementById("priceServicess").innerHTML = parseFloat(dataResultp.price).toFixed(2);
           if(dataResultp.imageDetails == null){
