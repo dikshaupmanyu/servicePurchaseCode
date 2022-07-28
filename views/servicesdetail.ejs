@@ -565,8 +565,8 @@ var specialKeys = new Array();
           }else {
               document.getElementById("frequncyService").innerHTML = "Yearly";
           }
-          document.getElementById("priceService").innerHTML = parseFloat(dataResultp.price).toFixed(2);
-          document.getElementById("priceServicess").innerHTML = parseFloat(dataResultp.price).toFixed(2);
+          document.getElementById("priceService").innerHTML = "$" + parseFloat(dataResultp.price).toFixed(2);
+          document.getElementById("priceServicess").innerHTML ="$" + parseFloat(dataResultp.price).toFixed(2);
           if(dataResultp.imageDetails == null){
               document.getElementById("serviceImage").src = dataResultp.thumbnailImageUrl;
           }else{

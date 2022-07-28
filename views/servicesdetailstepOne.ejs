@@ -540,10 +540,10 @@
           }else {
               document.getElementById("frequncyService").innerHTML = "Yearly";
           }
-      document.getElementById("priceService").innerHTML = parseFloat(
+      document.getElementById("priceService").innerHTML = "$" + parseFloat(
         dataResultp.price
       ).toFixed(2);
-      document.getElementById("priceServices").innerHTML = parseFloat(
+      document.getElementById("priceServices").innerHTML = "$" +  parseFloat(
         dataResultp.price
       ).toFixed(2);
       document.getElementById("prices").value = dataResultp.price * 100;
